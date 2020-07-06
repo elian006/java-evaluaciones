@@ -6,6 +6,7 @@
 package Modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,15 +17,17 @@ public class medico implements Serializable{
     private int id_medico;
     private String nombre;
     private String Apellido;
-    private Especialidad especialidad;
+    private ArrayList<Especialidad>especialidad;
 
-    public medico(int id_medico, String nombre, String Apellido, Especialidad especialidad) {
+
+    public medico(int id_medico, String nombre, String Apellido, ArrayList<Especialidad> especialidad) {
         this.id_medico = id_medico;
         this.nombre = nombre;
         this.Apellido = Apellido;
         this.especialidad = especialidad;
     }
 
+    
     public medico() {
     }
 
@@ -52,13 +55,14 @@ public class medico implements Serializable{
         this.Apellido = Apellido;
     }
 
-    public Especialidad getEspecialidad() {
+    public ArrayList<Especialidad> getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(Especialidad especialidad) {
+    public void setEspecialidad(ArrayList<Especialidad> especialidad) {
         this.especialidad = especialidad;
     }
+
 
     @Override
     public int hashCode() {
