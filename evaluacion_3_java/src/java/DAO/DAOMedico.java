@@ -9,7 +9,7 @@ package DAO;
 import Modelos.medico;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import Modelos.Especialidad;
 /**
  *
  * @author Elian
@@ -25,7 +25,7 @@ public class DAOMedico extends Conexion{
     ps.setInt(1, M.getId_medico());
     ps.setString(2, M.getNombre());
     ps.setString(3,M.getApellido());
-    ps.setInt(4,M.getEspecialidad(id_Especialidad));
+    ps.setInt(4,M.getEspecialidad().getId_Especialidad());
     int respuesta= ps.executeUpdate();
     return respuesta;
         }catch(SQLException | ClassNotFoundException ex){
@@ -37,11 +37,11 @@ public class DAOMedico extends Conexion{
     }
         public int modificarMedico(medico M) throws SQLException, ClassNotFoundException{
         conectar();
-        String sentencia="update especialidad set Nombre=?, set apellido=?,set especialidad=?"+"where Id_medico=?";
+        String sentencia="update medicos set Nombre=?, set apellido=?,set especialidad=?"+"where Id_medico=?";
         PreparedStatement ps= obtenerPS(sentencia);
         ps.setString(1,M.getNombre());
         ps.setString(2,M.getApellido());
-        ps.setString(3,M.getEspecialidad());
+        ps.setString(3,M.getEspecialidad().getId_Especialidad());
         ps.setInt(4, M.getId_medico());       
         int respuesta= ps.executeUpdate();
         desconectar();
